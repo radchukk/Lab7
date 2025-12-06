@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'RGB Color Picker',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightGreenAccent),
         useMaterial3: true,
       ),
       home: const ColorPickerPage(),
@@ -37,7 +37,7 @@ class _ColorPickerPageState extends State<ColorPickerPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text('Flutter Demo Home Page'),
+        title: const Text('Lab 7'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -50,19 +50,11 @@ class _ColorPickerPageState extends State<ColorPickerPage> {
               decoration: BoxDecoration(
                 color: Color.fromRGBO(_red.toInt(), _green.toInt(), _blue.toInt(), 1),
                 border: Border.all(color: Colors.black12),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.1),
-                    blurRadius: 10,
-                    spreadRadius: 2,
-                  )
-                ],
               ),
             ),
 
-            const SizedBox(height: 50), // Відступ
+            const SizedBox(height: 50),
 
-            // Секція RED
             _buildColorSlider(
                 label: 'Red',
                 value: _red,
@@ -74,7 +66,6 @@ class _ColorPickerPageState extends State<ColorPickerPage> {
                 }
             ),
 
-            // Секція GREEN
             _buildColorSlider(
                 label: 'Green',
                 value: _green,
@@ -86,7 +77,6 @@ class _ColorPickerPageState extends State<ColorPickerPage> {
                 }
             ),
 
-            // Секція BLUE
             _buildColorSlider(
                 label: 'Blue',
                 value: _blue,
@@ -103,7 +93,6 @@ class _ColorPickerPageState extends State<ColorPickerPage> {
     );
   }
 
-  // Допоміжний метод для створення повзунка (щоб не дублювати код 3 рази)
   Widget _buildColorSlider({
     required String label,
     required double value,
@@ -113,7 +102,6 @@ class _ColorPickerPageState extends State<ColorPickerPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Текстовий підпис, наприклад: "Red: 125"
         RichText(
           text: TextSpan(
             style: const TextStyle(fontSize: 16, color: Colors.black),
@@ -127,7 +115,7 @@ class _ColorPickerPageState extends State<ColorPickerPage> {
           value: value,
           min: 0,
           max: 255,
-          activeColor: Colors.deepPurple, // Колір активної частини як на скріншоті
+          activeColor: Colors.deepPurple,
           thumbColor: Colors.deepPurple,
           onChanged: onChanged,
         ),
